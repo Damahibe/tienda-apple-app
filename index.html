@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mercado Aura</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell" id="appShell" data-role="seller">
+      <aside class="sidebar" aria-label="Resumen de tienda">
+        <div class="brand">
+          <div class="brand-mark">A</div>
+          <div>
+            <p>Mercado Aura</p>
+            <span>Bar · tienda · cafe</span>
+          </div>
+        </div>
+
+        <nav class="role-switcher" id="roleSwitcher" aria-label="Perfiles">
+          <button class="role-button active" data-role="seller">Vendedor</button>
+          <button class="role-button" data-role="admin">Admin</button>
+          <button class="role-button" data-role="customer">Cliente</button>
+        </nav>
+
+        <section class="profile-card" aria-label="Perfil activo">
+          <span id="profileKicker">Caja activa</span>
+          <strong id="profileName">Camila · Vendedor</strong>
+          <p id="profileDescription">Toma pedidos, agrega productos y cobra sin salir del flujo.</p>
+        </section>
+
+        <div class="hero-product">
+          <img
+            src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80"
+            alt="Bebida fria servida en vaso"
+          />
+          <div class="hero-copy">
+            <span>Especial del dia</span>
+            <strong>Limonada premium</strong>
+            <p>Refrescante, artesanal y lista para sumar al pedido.</p>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <article>
+            <span>Ventas</span>
+            <strong>$1.28M</strong>
+          </article>
+          <article>
+            <span>Pedidos</span>
+            <strong>48</strong>
+          </article>
+        </div>
+
+        <div class="quick-panel">
+          <div>
+            <span id="modeKicker">Modo</span>
+            <strong id="serviceModeLabel">Mesa</strong>
+          </div>
+          <label class="switch">
+            <input id="serviceMode" type="checkbox" />
+            <span></span>
+          </label>
+        </div>
+      </aside>
+
+      <main class="catalog">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="viewKicker">Punto de venta</p>
+            <h1 id="viewTitle">Productos frescos, cobro veloz.</h1>
+          </div>
+          <button class="icon-button" id="clearCart" aria-label="Limpiar carrito" title="Limpiar carrito">
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+
+        <section class="tools" aria-label="Filtros de productos">
+          <div class="search">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="Buscar producto" autocomplete="off" />
+          </div>
+          <div class="segments" id="categoryTabs" role="tablist" aria-label="Categorias"></div>
+        </section>
+
+        <section class="section-head">
+          <div>
+            <p class="eyebrow">Catalogo</p>
+            <h2 id="categoryTitle">Todos los productos</h2>
+          </div>
+          <span id="productCount">0 items</span>
+        </section>
+
+        <section class="product-grid" id="productGrid" aria-live="polite"></section>
+
+        <section class="admin-workspace" id="adminWorkspace" aria-label="Panel admin">
+          <div class="admin-grid">
+            <article class="admin-card">
+              <span>Ingresos hoy</span>
+              <strong>$1.280.000</strong>
+              <p>18% sobre el promedio de martes.</p>
+            </article>
+            <article class="admin-card">
+              <span>Margen bruto</span>
+              <strong>42%</strong>
+              <p>Bebidas y panaderia sostienen la utilidad.</p>
+            </article>
+            <article class="admin-card alert">
+              <span>Stock bajo</span>
+              <strong>4 items</strong>
+              <p>Reponer cerveza, queso, limon y vasos.</p>
+            </article>
+          </div>
+
+          <div class="inventory-board">
+            <div class="section-head compact">
+              <div>
+                <p class="eyebrow">Inventario</p>
+                <h2>Control rapido</h2>
+              </div>
+              <button class="small-action" id="exportReport">Exportar</button>
+            </div>
+            <div class="inventory-list" id="inventoryList"></div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="cart-panel" aria-label="Carrito">
+        <div class="cart-header">
+          <div>
+            <p class="eyebrow" id="cartKicker">Pedido actual</p>
+            <h2 id="cartTitle">Carrito</h2>
+          </div>
+          <span id="cartBadge">0</span>
+        </div>
+
+        <div class="customer-card">
+          <label for="customerName" id="customerLabel">Cliente o mesa</label>
+          <input id="customerName" type="text" placeholder="Mesa 04" />
+        </div>
+
+        <div class="cart-items" id="cartItems"></div>
+
+        <div class="totals">
+          <div>
+            <span>Subtotal</span>
+            <strong id="subtotal">$0</strong>
+          </div>
+          <div>
+            <span>Servicio 8%</span>
+            <strong id="service">$0</strong>
+          </div>
+          <div class="grand-total">
+            <span>Total</span>
+            <strong id="total">$0</strong>
+          </div>
+        </div>
+
+        <div class="payment">
+          <button class="pay-option active" data-payment="Tarjeta">Tarjeta</button>
+          <button class="pay-option" data-payment="Efectivo">Efectivo</button>
+          <button class="pay-option" data-payment="QR">QR</button>
+        </div>
+
+        <button class="checkout" id="checkoutButton">Cobrar pedido</button>
+      </aside>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
